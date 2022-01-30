@@ -27,7 +27,7 @@ class Bintree:
             return Node(newvalue)
         else:
             if (node.value == newvalue):
-                print("Detta finns redan i trädet")
+                print( str(node.value) + " finns redan i trädet")
                 return node
             if (newvalue < node.value):
                 if (node.left == None):
@@ -54,18 +54,23 @@ class Bintree:
         if(node.right == None and node.left == None):
             return False
 
-        if node.value > value:
-            if self.finns(node.left, value):
-                return True
-            else:
-                return False
+        try:
+            if node.value > value:
+                if self.finns(node.left, value):
+                    return True
+                else:
+                    return False
+        except:
+            return False
 
-        if node.value < value:
-            if (self.finns(node.right, value)):
-                return True
-            else:
-                return False
-
+        try:
+            if node.value < value:
+                if (self.finns(node.right, value)):
+                    return True
+                else:
+                    return False
+        except:
+            return False
 
     def skriv(self, node):
         if(node == None):
@@ -81,18 +86,18 @@ class Bintree:
         return
 if __name__ == "__main__":
     tree = Bintree()
-    tree.put(10)
-    tree.put(15)
-    tree.put(5)
-    tree.put(8)
-    tree.put(12)
-    tree.put(17)
-    tree.put(3)
-    tree.put(8)
+    tree.put("deutschland")
+    tree.put("korv")
+    tree.put("walter")
+    tree.put("boba")
+    tree.put("boll")
+    tree.put("casper")
+    tree.put("korv")
+    tree.put("abba")
     tree.write()
 
-    print(tree.__contains__(5))
-    print(tree.__contains__(1))
-    print(tree.__contains__(17))
-    print(tree.__contains__(8))
-    print(tree.__contains__(18))
+    print(tree.__contains__("korv"))
+    print(tree.__contains__("bobaboba"))
+    print(tree.__contains__("boba"))
+    print(tree.__contains__(2))
+    print(tree.__contains__("schweden"))
